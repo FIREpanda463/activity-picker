@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>今天來做什麼？</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #333;
+    }
+    .result {
+      font-size: 2.5em;
+      margin: 30px;
+      color: #ff4081;
+      font-weight: bold;
+    }
+    button {
+      font-size: 1.4em;
+      padding: 14px 28px;
+      border: none;
+      background-color: #2196f3;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1976d2;
+    }
+    img {
+      margin-top: 40px;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>今天來做什麼好呢？</h1>
+  <div class="result" id="result">點一下開始隨機選擇 🎲</div>
+  <button onclick="randomPick()">抽一個活動</button>
+
+  <img src="image.png" alt="可愛熊貓" />
+
+  <audio id="spinSound" src="spin.mp3" preload="auto"></audio>
+
+  <script>
+    function randomPick() {
+      const sound = document.getElementById("spinSound");
+      sound.currentTime = 0;
+      sound.play();
+
+      const options = [
+        "看動漫", "看電影", "看影片", "玩遊戲", "睡覺", "放風箏",
+        "打麻將", "溜滑板", "去運動", "散步", "打電話", "畫畫",
+        "看夜景", "去海邊", "去動物園", "去美術館", "看展覽"
+      ];
+
+      // 延遲顯示結果模擬轉盤
+      setTimeout(() => {
+        const pick = options[Math.floor(Math.random() * options.length)];
+        document.getElementById('result').innerText = pick;
+      }, 1000); // 延遲1秒
+    }
+  </script>
+</body>
+</html>
